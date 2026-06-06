@@ -46,12 +46,20 @@ function Nav({ page, setPage, cart, currency, setCurrency, lang, setLang }) {
     { id: "home", label: lang === "sw" ? "Nyumbani" : "Home" },
     { id: "services", label: lang === "sw" ? "Huduma" : "Services" },
     { id: "shop", label: lang === "sw" ? "Duka" : "Shop" },
-    { id: "agrisoko", label: "AgriSoko" },
+    { id: "agrisoko", label: "AgriSoko ↗" },
     { id: "hosting", label: "Hosting" },
     { id: "domains", label: "Domains" },
     { id: "contact", label: lang === "sw" ? "Wasiliana" : "Contact" },
   ];
   const total = cart.reduce((s, i) => s + i.price * (i.qty || 1), 0);
+
+  const handleNavClick = (id) => {
+    if (id === "agrisoko") {
+      window.location.href = "https://sokoplus.africa";
+      return;
+    }
+    setPage(id);
+  };
 
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: "rgba(2,62,45,0.97)", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
@@ -63,7 +71,7 @@ function Nav({ page, setPage, cart, currency, setCurrency, lang, setLang }) {
         <div style={{ flex: 1 }} />
         <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
           {links.map(l => (
-            <button key={l.id} onClick={() => setPage(l.id)}
+            <button key={l.id} onClick={() => handleNavClick(l.id)}
               style={{ background: page === l.id ? "rgba(34,197,94,0.15)" : "none", border: "none", color: page === l.id ? "#22c55e" : "rgba(255,255,255,0.75)", padding: "6px 12px", borderRadius: 6, cursor: "pointer", fontSize: 13, fontWeight: 500, transition: "all 0.2s" }}>
               {l.label}
             </button>
@@ -170,7 +178,7 @@ function HomePage({ setPage, currency, lang }) {
             {TESTIMONIALS.map(t => (
               <div key={t.name} style={{ background: "#fff", borderRadius: 16, padding: "2rem" }}>
                 <Stars n={t.stars} />
-                <p style={{ color: "#374151", lineHeight: 1.7, margin: "12px 0 20px", fontSize: 15 }}>\'{t.text}\'</p>
+                <p style={{ color: "#374151", lineHeight: 1.7, margin: "12px 0 20px", fontSize: 15 }}>'{t.text}'</p>
                 <p style={{ margin: 0, fontWeight: 700, color: "#111" }}>{t.name}</p>
                 <p style={{ margin: 0, color: "#15803d", fontSize: 13 }}>{t.company}</p>
               </div>
@@ -190,7 +198,7 @@ function ShopPage({ addToCart, currency }) {
         <p style={{ color: "#6b7280", marginBottom: "3rem", fontSize: 18 }}>Choose the right package to grow your Kenyan business online.</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 24 }}>
           {PACKAGES.map(pkg => (
-            <div key={pkg.id} style={{ background: "#fff", borderRadius: 16, padding: "2rem", border: pkg.badge ? "2px solid #22c55e" : "1px solid #e5e7eb" }}>
+            <div key={pkg.id} style={{ background: "#fff", borderRadius: 16, padding: "2rem", border: pkg.badge ? "2px solid #22c55e" : "1px solid #e5e7eb", position: "relative" }}>
               {pkg.badge && <div style={{ position: "absolute", top: -12, left: 24, background: "#22c55e", color: "#fff", padding: "3px 16px", borderRadius: 100, fontSize: 12, fontWeight: 700 }}>⭐ {pkg.badge}</div>}
               <h3 style={{ margin: 0, fontWeight: 700, fontSize: 17, color: "#111" }}>{pkg.name}</h3>
               <p style={{ margin: "12px 0", fontSize: 28, fontWeight: 900, color: "#15803d" }}>{currency === "KES" ? KES(pkg.price) : USD(pkg.price)}</p>
@@ -256,10 +264,10 @@ function AgriSokoPage({ currency }) {
               SokoPlus is a smart Point of Sale and farm management software built for Kenyan farmers, cooperatives, agri-exporters, livestock traders, and fresh produce businesses.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button style={{ background: "#22c55e", color: "#fff", border: "none", padding: "14px 26px", borderRadius: 10, fontSize: 15, fontWeight: 800, cursor: "pointer" }}>
-                Start 14-Day Free Trial →
+              <button onClick={() => window.location.href = "https://sokoplus.africa"} style={{ background: "#22c55e", color: "#fff", border: "none", padding: "14px 26px", borderRadius: 10, fontSize: 15, fontWeight: 800, cursor: "pointer" }}>
+                Visit SokoPlus →
               </button>
-              <button style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", padding: "14px 26px", borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
+              <button onClick={() => window.location.href = "https://sokoplus.africa"} style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", padding: "14px 26px", borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
                 Book SokoPlus Demo
               </button>
             </div>
@@ -321,8 +329,8 @@ function AgriSokoPage({ currency }) {
                 {plan.features.map(feature => (
                   <p key={feature} style={{ margin: "8px 0", color: "#374151", fontSize: 14 }}>✅ {feature}</p>
                 ))}
-                <button style={{ marginTop: "1.5rem", width: "100%", background: plan.popular ? "#22c55e" : "#fff", color: plan.popular ? "#fff" : "#15803d", border: "2px solid #22c55e", padding: "12px", borderRadius: 10, fontWeight: 800, cursor: "pointer" }}>
-                  Start Free Trial
+                <button onClick={() => window.location.href = "https://sokoplus.africa"} style={{ marginTop: "1.5rem", width: "100%", background: plan.popular ? "#22c55e" : "#fff", color: plan.popular ? "#fff" : "#15803d", border: "2px solid #22c55e", padding: "12px", borderRadius: 10, fontWeight: 800, cursor: "pointer" }}>
+                  Go to SokoPlus
                 </button>
               </div>
             ))}
@@ -541,3 +549,4 @@ export default function FaidaSoko() {
     </div>
   );
 }
+  
