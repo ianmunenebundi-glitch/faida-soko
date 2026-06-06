@@ -206,12 +206,129 @@ function ShopPage({ addToCart, currency }) {
 }
 
 function AgriSokoPage({ currency }) {
+  const fmt = (amount) => currency === "KES" ? KES(amount) : USD(amount);
+
+  const sokoplusPlans = [
+    {
+      name: "Starter",
+      price: 4900,
+      desc: "For small farms, farm shops, and startup agri-businesses.",
+      features: ["POS Sales Terminal", "Inventory Tracking", "Customer Records", "M-Pesa Payments", "Basic Reports", "14-Day Free Trial"]
+    },
+    {
+      name: "Professional",
+      price: 14900,
+      desc: "For growing farms, cooperatives, and produce traders.",
+      features: ["Everything in Starter", "Farmers Directory", "Harvest Tracking", "Stock Alerts", "AI Help Panel", "Weather Updates", "Offline Mode"],
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      price: 49900,
+      desc: "For large cooperatives, exporters, and livestock businesses.",
+      features: ["Everything in Professional", "Export Module", "Compliance Documents", "Admin Dashboard", "Audit Logs", "Advanced AI Analytics", "Priority Support"]
+    }
+  ];
+
+  const features = [
+    { icon: "🛒", title: "POS Sales Terminal", desc: "Process sales, apply discounts, accept Cash, Bank, and M-Pesa STK Push payments." },
+    { icon: "📦", title: "Inventory Management", desc: "Track products, stock levels, SKU codes, categories, stock movements, and low-stock alerts." },
+    { icon: "👨‍🌾", title: "Farmers Directory", desc: "Manage supplying farmers, cooperatives, locations, crop specialties, and supply history." },
+    { icon: "🌾", title: "Harvest Tracking", desc: "Track harvest batches from Pending to Ready, In Transit, Sold, or Exported." },
+    { icon: "🐄", title: "Livestock & Export Module", desc: "Manage animal exports, destination countries, health certificates, and export status." },
+    { icon: "📄", title: "Compliance Documents", desc: "Store export permits, phytosanitary certificates, KEBS approvals, and expiry alerts." },
+    { icon: "🤖", title: "AI Analytics", desc: "Get market trends, crop insights, product performance, and export opportunity alerts." },
+    { icon: "📱", title: "Offline PWA Mode", desc: "Record sales even when internet is down and sync automatically when back online." }
+  ];
+
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,#052e16,#14532d)", padding: "8rem 1.5rem" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <h1 style={{ color: "#fff", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 900, margin: "0 0 1rem" }}>AgriSoko — Connect Farmers to Global Markets</h1>
-        <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 18 }}>Smart digital marketing solutions for Kenyan farmers and agricultural businesses.</p>
-      </div>
+    <div style={{ minHeight: "100vh", background: "#f0fdf4" }}>
+      <section style={{ background: "linear-gradient(135deg,#052e16,#14532d)", padding: "8rem 1.5rem 5rem" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "3rem", alignItems: "center" }}>
+          <div>
+            <div style={{ display: "inline-block", background: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.35)", color: "#86efac", padding: "6px 16px", borderRadius: 100, fontSize: 13, fontWeight: 700, marginBottom: "1.5rem" }}>
+              🌱 AgriSoko Platform
+            </div>
+            <h1 style={{ color: "#fff", fontSize: "clamp(2rem,4vw,3.4rem)", fontWeight: 900, margin: "0 0 1rem", lineHeight: 1.1 }}>
+              SokoPlus — Connecting Farms to Markets
+            </h1>
+            <p style={{ color: "rgba(255,255,255,0.78)", fontSize: 18, lineHeight: 1.8, marginBottom: "2rem" }}>
+              SokoPlus is a smart Point of Sale and farm management software built for Kenyan farmers, cooperatives, agri-exporters, livestock traders, and fresh produce businesses.
+            </p>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <button style={{ background: "#22c55e", color: "#fff", border: "none", padding: "14px 26px", borderRadius: 10, fontSize: 15, fontWeight: 800, cursor: "pointer" }}>
+                Start 14-Day Free Trial →
+              </button>
+              <button style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", padding: "14px 26px", borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
+                Book SokoPlus Demo
+              </button>
+            </div>
+          </div>
+
+          <div style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: 24, padding: "2rem", color: "#fff" }}>
+            <h3 style={{ margin: "0 0 1rem", fontSize: 22 }}>From Farm Gate to Final Sale</h3>
+            {["Farmer supplies produce", "Harvest logged in system", "Inventory updated", "Sale processed via POS", "M-Pesa payment confirmed", "Invoice generated", "Reports & AI insights ready"].map((step, i) => (
+              <div key={step} style={{ display: "flex", gap: 12, alignItems: "center", margin: "12px 0" }}>
+                <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#22c55e", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 900 }}>{i + 1}</div>
+                <span style={{ color: "rgba(255,255,255,0.86)", fontSize: 14 }}>{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "5rem 1.5rem", background: "#fff" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", fontWeight: 900, color: "#111", marginBottom: "1rem" }}>
+            Built for Kenya’s Agricultural Businesses
+          </h2>
+          <p style={{ color: "#6b7280", fontSize: 17, lineHeight: 1.7, maxWidth: 850, marginBottom: "3rem" }}>
+            SokoPlus digitizes sales, inventory, farmers, harvests, customers, exports, compliance documents, reports, M-Pesa payments, and AI-powered business insights.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 24 }}>
+            {features.map(f => (
+              <div key={f.title} style={{ border: "1px solid #e5e7eb", borderRadius: 16, padding: "1.8rem", background: "#fff" }}>
+                <div style={{ fontSize: 34, marginBottom: 12 }}>{f.icon}</div>
+                <h3 style={{ margin: "0 0 8px", color: "#111", fontWeight: 800 }}>{f.title}</h3>
+                <p style={{ margin: 0, color: "#6b7280", fontSize: 14, lineHeight: 1.6 }}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "5rem 1.5rem", background: "#ecfdf5" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", fontWeight: 900, color: "#111", marginBottom: "0.5rem" }}>
+            SokoPlus Pricing
+          </h2>
+          <p style={{ color: "#6b7280", marginBottom: "3rem" }}>Start with a 14-day free trial. No credit card required.</p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
+            {sokoplusPlans.map(plan => (
+              <div key={plan.name} style={{ background: "#fff", borderRadius: 20, padding: "2rem", border: plan.popular ? "2px solid #22c55e" : "1px solid #e5e7eb", position: "relative" }}>
+                {plan.popular && (
+                  <div style={{ position: "absolute", top: -14, left: 24, background: "#22c55e", color: "#fff", padding: "5px 16px", borderRadius: 100, fontSize: 12, fontWeight: 800 }}>
+                    Most Popular
+                  </div>
+                )}
+                <h3 style={{ margin: "0 0 8px", fontWeight: 900, color: "#111", fontSize: 22 }}>{plan.name}</h3>
+                <p style={{ color: "#6b7280", fontSize: 14, lineHeight: 1.6, minHeight: 45 }}>{plan.desc}</p>
+                <p style={{ fontSize: 30, fontWeight: 900, color: "#15803d", margin: "1rem 0" }}>
+                  {fmt(plan.price)}<span style={{ fontSize: 14, color: "#6b7280", fontWeight: 600 }}>/mo</span>
+                </p>
+                {plan.features.map(feature => (
+                  <p key={feature} style={{ margin: "8px 0", color: "#374151", fontSize: 14 }}>✅ {feature}</p>
+                ))}
+                <button style={{ marginTop: "1.5rem", width: "100%", background: plan.popular ? "#22c55e" : "#fff", color: plan.popular ? "#fff" : "#15803d", border: "2px solid #22c55e", padding: "12px", borderRadius: 10, fontWeight: 800, cursor: "pointer" }}>
+                  Start Free Trial
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
