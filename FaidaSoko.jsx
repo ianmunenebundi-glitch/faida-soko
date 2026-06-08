@@ -19,12 +19,20 @@ const PACKAGES = [
 ];
 
 const SERVICES = [
-  { icon: "📱", title: "Digital Marketing", desc: "Social media, SEO, Google Ads, content and campaign management for Kenyan businesses." },
-  { icon: "💻", title: "Web Development", desc: "Modern mobile-first websites, e-commerce platforms, landing pages and business systems." },
-  { icon: "🌍", title: "Domains & Hosting", desc: ".co.ke, .com and .africa domains with secure hosting, SSL and business email support." },
-  { icon: "🎨", title: "Branding & Design", desc: "Logos, brand identity, posters, social media graphics and professional design materials." },
-  { icon: "🌱", title: "AgriTech Solutions", desc: "AgriSoko and SokoPlus tools for farmers, cooperatives and agricultural exporters." },
-  { icon: "🤖", title: "AI Business Support", desc: "AI chatbot, digital insights, automation and smarter customer support experiences." },
+  { icon: "🔍", title: "Search Engine Optimization (SEO)", subtitle: "Rank #1 on Google – Drive Organic Traffic to Your Business", desc: "Dominate local search results and reach more Kenyan customers.", details: ["Keyword Research & Strategy", "On-Page & Technical SEO", "Local SEO & Google My Business", "Monthly Performance Reports"] },
+  { icon: "📱", title: "Social Media Marketing (SMM)", subtitle: "Dominate Facebook, Instagram, TikTok & LinkedIn", desc: "Build a strong social presence and engage your audience.", details: ["Custom Content Strategy", "Ads Management & Growth Hacking", "Influencer Collaborations", "Analytics & Engagement Reports"] },
+  { icon: "📣", title: "Digital Advertising (PPC & Meta Ads)", subtitle: "Convert Scrollers into Buyers with Targeted Ads", desc: "High-converting ad campaigns that deliver measurable ROI.", details: ["Google Ads", "Facebook/Instagram Ads", "A/B Testing", "Retargeting Campaigns"] },
+  { icon: "✍️", title: "Content Creation", subtitle: "Engaging Content That Sells", desc: "Strategic content that drives engagement and conversions.", details: ["Blog Writing", "Video Scripts", "Infographics & eBooks", "SEO-Optimized Articles"] },
+  { icon: "📸", title: "Creative Photography & Videography", subtitle: "Stunning Visuals for Your Brand", desc: "Professional visual content that captures your brand essence.", details: ["Product Photography", "Promo Videos & Reels", "Drone Shots & Editing", "Branded Stock Libraries"] },
+  { icon: "💻", title: "Web Development", subtitle: "Fast, Secure, High-Converting Websites", desc: "Modern websites that convert visitors to customers.", details: ["WordPress", "Shopify", "Custom Sites", "Mobile-Optimized Design", "SEO-Friendly Structure"] },
+  { icon: "🎨", title: "Graphic Design", subtitle: "Logos, Banners & Branding That Stand Out", desc: "Professional designs that make your brand memorable.", details: ["Logo & Brand Identity", "Social Media Graphics", "Print & Packaging Design", "Animated Ads"] },
+  { icon: "📧", title: "Email Marketing", subtitle: "Direct Communication That Converts", desc: "Automated email campaigns that nurture leads and drive sales.", details: ["Email Campaign Design", "Automation & Sequences", "List Building Strategies", "Performance Analytics"] },
+  { icon: "🤝", title: "Influencer Marketing", subtitle: "Leverage Kenyan Influencers for Brand Growth", desc: "Connect with top Kenyan influencers to amplify your reach.", details: ["Influencer Identification", "Campaign Management", "Content Collaboration", "ROI Tracking"] },
+  { icon: "🎯", title: "Brand Strategy & Positioning", subtitle: "Define Your Brand's Unique Market Position", desc: "Strategic brand development for competitive advantage.", details: ["Brand Audit & Analysis", "Market Positioning", "Messaging Framework", "Brand Guidelines"] },
+  { icon: "📈", title: "Conversion Rate Optimization", subtitle: "Turn More Visitors Into Paying Customers", desc: "Data-driven optimization to maximize your conversion rates.", details: ["Website Analytics Setup", "A/B Testing", "User Experience Optimization", "Sales Funnel Analysis"] },
+  { icon: "🛡️", title: "Online Reputation Management", subtitle: "Protect & Enhance Your Digital Reputation", desc: "Monitor and manage your brand's online presence.", details: ["Review Management", "Crisis Communication", "Brand Monitoring", "Reputation Recovery"] },
+  { icon: "🌍", title: "Domain Registration", subtitle: "Secure Your Perfect Domain Name", desc: "Register .co.ke, .com, .africa and more with instant setup.", details: ["13+ Domain Extensions", "Pricing from KSh 1,500", "FREE .ke Domain Transfers", "Instant Domain Activation"] },
+  { icon: "🖥️", title: "Web Hosting", subtitle: "Reliable Hosting with Free Domain", desc: "Fast, secure hosting with free .co.ke domain support.", details: ["Free SSL", "99.9% Uptime", "DirectAdmin Control Panel", "24/7 Expert Support"] },
 ];
 
 const TESTIMONIALS = [
@@ -70,36 +78,32 @@ function Nav({ page, setPage, cart, currency, setCurrency, lang, setLang }) {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 1.5rem", display: "flex", alignItems: "center", height: 70, gap: 16 }}>
         <button onClick={() => setPage("home")} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, padding: 0 }}>
           <div style={{ width: 40, height: 40, borderRadius: 12, background: `linear-gradient(135deg,${BLUE},${GOLD})`, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900, color: "#fff", fontSize: 16 }}>FS</div>
-          <span style={{ color: "#fff", fontWeight: 900, fontSize: 19, letterSpacing: "-0.5px" }}>FAIDA SOKO</span>
+          <span style={{ color: "#fff", fontWeight: 900, fontSize: 19 }}>FAIDA SOKO</span>
         </button>
 
         <div style={{ flex: 1 }} />
 
-        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 4, alignItems: "center", flexWrap: "wrap" }}>
           {links.map(l => (
             <button key={l.id} onClick={() => handleNavClick(l.id)}
-              style={{ background: page === l.id ? "rgba(245,158,11,0.18)" : "none", border: "none", color: page === l.id ? GOLD : "rgba(255,255,255,0.82)", padding: "7px 11px", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: 700 }}>
+              style={{ background: page === l.id ? "rgba(245,158,11,0.18)" : "none", border: "none", color: page === l.id ? GOLD : "rgba(255,255,255,0.82)", padding: "7px 10px", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: 700 }}>
               {l.label}
             </button>
           ))}
         </div>
 
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <button onClick={() => setCurrency(c => c === "KES" ? "USD" : "KES")}
-            style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", padding: "5px 10px", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: 700 }}>
+          <button onClick={() => setCurrency(c => c === "KES" ? "USD" : "KES")} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", padding: "5px 10px", borderRadius: 8, cursor: "pointer", fontSize: 12, fontWeight: 700 }}>
             {currency}
           </button>
-          <button onClick={() => setLang(l => l === "en" ? "sw" : "en")}
-            style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", padding: "5px 10px", borderRadius: 8, cursor: "pointer", fontSize: 12 }}>
+          <button onClick={() => setLang(l => l === "en" ? "sw" : "en")} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", padding: "5px 10px", borderRadius: 8, cursor: "pointer", fontSize: 12 }}>
             🌍 {lang === "en" ? "EN" : "SW"}
           </button>
-          <button onClick={() => setCartOpen(true)}
-            style={{ background: "none", border: "none", color: "#fff", cursor: "pointer", fontSize: 20, position: "relative", padding: 4 }}>
+          <button onClick={() => setCartOpen(true)} style={{ background: "none", border: "none", color: "#fff", cursor: "pointer", fontSize: 20, position: "relative", padding: 4 }}>
             🛒
             {cart.length > 0 && <span style={{ position: "absolute", top: -2, right: -2, background: GOLD, color: NAVY, borderRadius: "50%", width: 17, height: 17, fontSize: 10, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900 }}>{cart.length}</span>}
           </button>
-          <button onClick={() => setPage("account")}
-            style={{ background: GOLD, border: "none", color: NAVY, padding: "8px 14px", borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 900 }}>
+          <button onClick={() => setPage("account")} style={{ background: GOLD, border: "none", color: NAVY, padding: "8px 14px", borderRadius: 9, cursor: "pointer", fontSize: 13, fontWeight: 900 }}>
             Sign In
           </button>
         </div>
@@ -144,18 +148,10 @@ function Nav({ page, setPage, cart, currency, setCurrency, lang, setLang }) {
   );
 }
 
-function HomePage({ setPage, currency, lang }) {
+function HomePage({ setPage, lang }) {
   const hero = lang === "sw"
-    ? {
-      h: "Soko la Kidijitali kwa Ukuaji wa Biashara",
-      sub: "Tunasaidia biashara za Kenya kukua kupitia tovuti, masoko ya kidijitali, hosting, domains na teknolojia ya kilimo.",
-      cta: "Anza Sasa"
-    }
-    : {
-      h: "Kenya’s Digital Marketplace for Business Growth",
-      sub: "Websites • Digital Marketing • Hosting • Domains • AgriTech. Helping Kenyan businesses grow online through technology, marketing and digital commerce.",
-      cta: "Get Started"
-    };
+    ? { h: "Soko la Kidijitali kwa Ukuaji wa Biashara", sub: "Tunasaidia biashara za Kenya kukua kupitia tovuti, masoko ya kidijitali, hosting, domains na teknolojia ya kilimo.", cta: "Anza Sasa" }
+    : { h: "Kenya’s Digital Marketplace for Business Growth", sub: "Websites • Digital Marketing • Hosting • Domains • AgriTech. Helping Kenyan businesses grow online through technology, marketing and digital commerce.", cta: "Get Started" };
 
   return (
     <div>
@@ -180,20 +176,6 @@ function HomePage({ setPage, currency, lang }) {
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: "2.5rem" }}>
               <button onClick={() => setPage("shop")} style={{ background: GOLD, color: NAVY, border: "none", padding: "15px 30px", borderRadius: 12, fontSize: 16, fontWeight: 950, cursor: "pointer", boxShadow: "0 12px 30px rgba(245,158,11,0.35)" }}>{hero.cta} →</button>
               <button onClick={() => setPage("contact")} style={{ background: "rgba(255,255,255,0.09)", color: "#fff", border: "1px solid rgba(255,255,255,0.28)", padding: "15px 30px", borderRadius: 12, fontSize: 16, fontWeight: 800, cursor: "pointer" }}>Book Consultation</button>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(90px,1fr))", gap: 12, maxWidth: 640 }}>
-              {[
-                ["500+", "Businesses"],
-                ["150+", "Websites"],
-                ["24/7", "Support"],
-                ["99.9%", "Uptime"]
-              ].map(([num, label]) => (
-                <div key={label} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.16)", borderRadius: 14, padding: "16px 12px", textAlign: "center" }}>
-                  <div style={{ color: GOLD, fontSize: 24, fontWeight: 950 }}>{num}</div>
-                  <div style={{ color: "rgba(255,255,255,0.75)", fontSize: 12 }}>{label}</div>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -233,16 +215,33 @@ function HomePage({ setPage, currency, lang }) {
       <section style={{ padding: "6rem 1.5rem", background: "#f8fafc" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(2rem,3vw,3rem)", fontWeight: 950, margin: "0 0 1rem", color: NAVY }}>Services Designed for Kenyan Businesses</h2>
-            <p style={{ color: "#64748b", fontSize: 18, maxWidth: 750, margin: "0 auto" }}>Everything your business needs to launch, grow and operate online professionally.</p>
+            <h2 style={{ fontSize: "clamp(2rem,3vw,3rem)", fontWeight: 950, margin: "0 0 1rem", color: NAVY }}>Our Services</h2>
+            <p style={{ color: "#64748b", fontSize: 18, maxWidth: 750, margin: "0 auto" }}>Comprehensive digital marketing solutions designed for Kenyan businesses.</p>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
             {SERVICES.map(s => (
               <div key={s.title} style={{ padding: "2rem", border: "1px solid #e5e7eb", borderRadius: 22, background: "#fff", boxShadow: "0 16px 45px rgba(15,23,42,0.06)" }}>
                 <div style={{ fontSize: 36, marginBottom: 14 }}>{s.icon}</div>
-                <h3 style={{ margin: "0 0 10px", fontWeight: 900, color: NAVY, fontSize: 20 }}>{s.title}</h3>
+
+                <h3 style={{ margin: "0 0 8px", fontWeight: 900, color: NAVY, fontSize: 20 }}>{s.title}</h3>
+
+                <p style={{ margin: "0 0 10px", color: RED, fontSize: 13, fontWeight: 800 }}>{s.subtitle}</p>
+
                 <p style={{ margin: 0, color: "#64748b", lineHeight: 1.65, fontSize: 15 }}>{s.desc}</p>
+
+                <div style={{ marginTop: 18, display: "grid", gap: 8 }}>
+                  {s.details.map((item) => (
+                    <div key={item} style={{ color: "#334155", fontSize: 14, fontWeight: 650 }}>✅ {item}</div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => window.open(`https://wa.me/254723032756?text=I'm interested in ${encodeURIComponent(s.title)}`, "_blank")}
+                  style={{ marginTop: 18, width: "100%", padding: "11px", borderRadius: 10, border: `2px solid ${BLUE}`, color: BLUE, background: "#fff", fontWeight: 900, cursor: "pointer" }}
+                >
+                  Learn More →
+                </button>
               </div>
             ))}
           </div>
@@ -254,7 +253,7 @@ function HomePage({ setPage, currency, lang }) {
       <section style={{ padding: "6rem 1.5rem", background: "#fff" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(2rem,3vw,3rem)", fontWeight: 950, margin: "0 0 1rem", color: NAVY }}>Real Results from Real Kenyan Businesses</h2>
+            <h2 style={{ fontSize: "clamp(2rem,3vw,3rem)", fontWeight: 950, margin: "0 0 1rem", color: NAVY }}>Client Success Stories</h2>
             <p style={{ color: "#64748b", fontSize: 18 }}>Trusted by local businesses that want professional digital growth.</p>
           </div>
 
@@ -289,9 +288,7 @@ function SokoPlusSection() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 14 }}>
           {features.map(f => (
-            <div key={f} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 18, padding: "1.3rem", color: "#fff", fontWeight: 850 }}>
-              ✅ {f}
-            </div>
+            <div key={f} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 18, padding: "1.3rem", color: "#fff", fontWeight: 850 }}>✅ {f}</div>
           ))}
         </div>
       </div>
@@ -350,8 +347,7 @@ function DomainsPage() {
         <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 950, margin: "0 0 0.5rem", color: NAVY }}>Find Your Perfect Domain</h1>
         <p style={{ color: "#64748b", marginBottom: "2rem" }}>Register .co.ke, .ke, .com, .africa and more.</p>
         <div style={{ display: "flex", gap: 8, marginBottom: "2rem" }}>
-          <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Enter domain name"
-            style={{ flex: 1, padding: "16px 20px", border: "2px solid #e5e7eb", borderRadius: 12, fontSize: 16 }} />
+          <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Enter domain name" style={{ flex: 1, padding: "16px 20px", border: "2px solid #e5e7eb", borderRadius: 12, fontSize: 16 }} />
           <button style={{ background: GOLD, color: NAVY, border: "none", padding: "16px 28px", borderRadius: 12, fontSize: 16, fontWeight: 950, cursor: "pointer" }}>Search</button>
         </div>
       </div>
@@ -394,11 +390,9 @@ function ContactPage() {
               <h2 style={{ margin: "0 0 1.5rem", fontWeight: 950, color: NAVY }}>Send Us a Message</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {[["name", "Full Name"], ["email", "Email"], ["phone", "Phone"]].map(([field, ph]) => (
-                  <input key={field} placeholder={ph} value={form[field]} onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))}
-                    style={{ padding: "14px 16px", border: "1px solid #e5e7eb", borderRadius: 12, fontSize: 15 }} />
+                  <input key={field} placeholder={ph} value={form[field]} onChange={e => setForm(f => ({ ...f, [field]: e.target.value }))} style={{ padding: "14px 16px", border: "1px solid #e5e7eb", borderRadius: 12, fontSize: 15 }} />
                 ))}
-                <textarea placeholder="Message" value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  rows={5} style={{ padding: "14px 16px", border: "1px solid #e5e7eb", borderRadius: 12 }} />
+                <textarea placeholder="Message" value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} rows={5} style={{ padding: "14px 16px", border: "1px solid #e5e7eb", borderRadius: 12 }} />
                 <button onClick={submit} style={{ background: BLUE, color: "#fff", border: "none", padding: "15px", borderRadius: 12, fontWeight: 950, cursor: "pointer" }}>Send Message →</button>
               </div>
             </div>
@@ -473,8 +467,7 @@ function Chatbot() {
 
   return (
     <>
-      <button onClick={() => setOpen(o => !o)}
-        style={{ position: "fixed", bottom: 24, left: 24, width: 56, height: 56, borderRadius: "50%", background: `linear-gradient(135deg,${BLUE},${GOLD})`, border: "none", color: "#fff", fontSize: 26, cursor: "pointer", zIndex: 999 }}>
+      <button onClick={() => setOpen(o => !o)} style={{ position: "fixed", bottom: 24, left: 24, width: 56, height: 56, borderRadius: "50%", background: `linear-gradient(135deg,${BLUE},${GOLD})`, border: "none", color: "#fff", fontSize: 26, cursor: "pointer", zIndex: 999 }}>
         {open ? "✕" : "🤖"}
       </button>
       {open && (
@@ -493,8 +486,7 @@ function Chatbot() {
             <div ref={bottomRef} />
           </div>
           <div style={{ padding: "12px 16px", borderTop: "1px solid #e5e7eb", display: "flex", gap: 8 }}>
-            <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && send()} placeholder="Ask..."
-              style={{ flex: 1, padding: "10px 14px", border: "1px solid #e5e7eb", borderRadius: 10 }} />
+            <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && send()} placeholder="Ask..." style={{ flex: 1, padding: "10px 14px", border: "1px solid #e5e7eb", borderRadius: 10 }} />
             <button onClick={send} style={{ background: BLUE, color: "#fff", border: "none", width: 40, borderRadius: 10, cursor: "pointer" }}>→</button>
           </div>
         </div>
@@ -515,13 +507,13 @@ export default function FaidaSoko() {
 
   const renderPage = () => {
     switch (page) {
-      case "home": return <HomePage setPage={setPage} currency={currency} lang={lang} />;
+      case "home": return <HomePage setPage={setPage} lang={lang} />;
       case "shop": return <ShopPage addToCart={addToCart} currency={currency} />;
       case "hosting": return <HostingPage currency={currency} />;
       case "domains": return <DomainsPage />;
       case "contact": return <ContactPage />;
       case "account": return <AccountPage />;
-      default: return <HomePage setPage={setPage} currency={currency} lang={lang} />;
+      default: return <HomePage setPage={setPage} lang={lang} />;
     }
   };
 
@@ -532,8 +524,7 @@ export default function FaidaSoko() {
         {renderPage()}
       </main>
       <Footer setPage={setPage} />
-      <a href="https://wa.me/254723032756" target="_blank" rel="noreferrer"
-        style={{ position: "fixed", bottom: 24, right: 24, width: 56, height: 56, borderRadius: "50%", background: "#25d366", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, zIndex: 999, textDecoration: "none" }}>
+      <a href="https://wa.me/254723032756" target="_blank" rel="noreferrer" style={{ position: "fixed", bottom: 24, right: 24, width: 56, height: 56, borderRadius: "50%", background: "#25d366", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, zIndex: 999, textDecoration: "none" }}>
         💬
       </a>
       <Chatbot />
