@@ -272,7 +272,65 @@ function HomePage({ setPage, lang }) {
     </div>
   );
 }
+function AboutSection() {
+  return (
+    <section style={{ padding: "6rem 1.5rem", background: "#fff" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
+        <div>
+          <div style={{ display: "inline-block", background: "rgba(29,78,216,0.08)", color: BLUE, padding: "8px 16px", borderRadius: 100, fontWeight: 900, fontSize: 13, marginBottom: 18 }}>
+            About FAIDA SOKO
+          </div>
 
+          <h2 style={{ fontSize: "clamp(2rem,3vw,3rem)", fontWeight: 950, color: NAVY, lineHeight: 1.12, margin: "0 0 1rem" }}>
+            Helping Kenyan Businesses Grow Digitally
+          </h2>
+
+          <p style={{ color: "#64748b", fontSize: 17, lineHeight: 1.8, marginBottom: 18 }}>
+            FAIDA SOKO is a digital growth platform built for Kenyan businesses that want to grow online, sell better, attract customers and operate more professionally.
+          </p>
+
+          <p style={{ color: "#64748b", fontSize: 17, lineHeight: 1.8, marginBottom: 24 }}>
+            We combine digital marketing, web development, hosting, domain registration, branding and AgriTech solutions to help businesses move from offline struggle to online growth.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 14 }}>
+            {[
+              "Kenyan market expertise",
+              "Affordable digital solutions",
+              "Business growth focus",
+              "Fast WhatsApp support"
+            ].map((item) => (
+              <div key={item} style={{ background: "#f8fafc", border: "1px solid #e5e7eb", borderRadius: 14, padding: 14, fontWeight: 800, color: NAVY }}>
+                ✅ {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ background: `linear-gradient(135deg,${BLUE},${NAVY})`, borderRadius: 28, padding: "2rem", color: "#fff", boxShadow: "0 25px 70px rgba(15,23,42,0.25)" }}>
+          <h3 style={{ fontSize: 26, fontWeight: 950, marginTop: 0 }}>Our Mission</h3>
+          <p style={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.8 }}>
+            To make digital growth simple, affordable and accessible for businesses across Kenya and Africa.
+          </p>
+
+          <div style={{ display: "grid", gap: 14, marginTop: 24 }}>
+            {[
+              ["500+", "Businesses Targeted"],
+              ["150+", "Websites & Digital Projects"],
+              ["24/7", "Support Access"],
+              ["Kenya", "Built for Local Growth"]
+            ].map(([num, label]) => (
+              <div key={label} style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.18)", borderRadius: 16, padding: 18, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <strong style={{ color: GOLD, fontSize: 24 }}>{num}</strong>
+                <span style={{ color: "rgba(255,255,255,0.8)" }}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 function SokoPlusSection() {
   const features = ["POS Sales", "Inventory", "Farmers Directory", "Harvest Tracking", "Export Docs", "M-Pesa", "AI Analytics", "Offline Mode"];
 
