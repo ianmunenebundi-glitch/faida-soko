@@ -1,9 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from '../FaidaSoko.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import FaidaSoko from "../FaidaSoko.jsx";
+import { AuthProvider } from "./AuthContext.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <AuthProvider>
+      <FaidaSoko />
+    </AuthProvider>
+  </React.StrictMode>
+);
